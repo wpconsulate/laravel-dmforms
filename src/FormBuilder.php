@@ -51,11 +51,15 @@ class FormBuilder
 
     public function render(): string
     {
-        $render = $this->attrs['render'];
-        $methodName = 'render' . ucfirst($render);
-        $output = $this->$methodName();
-        $this->resetAttributes();
-        return $output;
+        // pr($this->attrs);
+        if(isset($this->attrs['render'])){
+            $render = $this->attrs['render'];
+            $methodName = 'render' . ucfirst($render);
+            $output = $this->$methodName();
+            $this->resetAttributes();
+            return $output;
+        }
+        return '';
     }
 
     private function renderFormOpen(): string

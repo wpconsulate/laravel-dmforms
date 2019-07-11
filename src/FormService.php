@@ -278,6 +278,19 @@ class FormService
     }
 
     /**
+     * Create a email input
+     *
+     * @param string $name
+     * @param string $label
+     * @param string $default
+     * @return FormService
+     */
+    public function email(string $name = null, $label = null, string $default = null): FormService
+    {
+        return $this->render('input')->type('email')->name($name)->label($label)->value($default);
+    }
+
+    /**
      * Create a date input
      *
      * @param string $name
@@ -314,6 +327,19 @@ class FormService
     public function tel(string $name = null, $label = null, string $default = null): FormService
     {
         return $this->render('input')->type('tel')->name($name)->label($label)->value($default);
+    }
+
+    /**
+     * Create a password input
+     *
+     * @param string $name
+     * @param string $label
+     * @param string $default
+     * @return FormService
+     */
+    public function password(string $name = null, $label = null, string $default = null): FormService
+    {
+        return $this->render('input')->type('password')->name($name)->label($label)->value($default);
     }
 
     /**
@@ -486,7 +512,7 @@ class FormService
      */
     public function button(string $value = null, $color = 'primary', $size = null): FormService
     {
-        return $this->type('button')->set('render', 'button')->value($value)->color($color)->size($size);
+        return $this->_set('render', 'button')->type('button')->value($value)->color($color)->size($size);
     }
 
     /**
